@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy the package.json and package-lock.json (or yarn.lock)
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --production
+# Install dependencies (ignoring peer dependency conflicts)
+RUN npm install --production --legacy-peer-deps
 
 # Copy the rest of your application code
 COPY . .
